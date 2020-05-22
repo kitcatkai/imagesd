@@ -42,11 +42,11 @@ def uploadFile():
     """
     file = request.files['file']
     file.save("./test.jpg")
-    stats = darknet.performDetect(imagePath="./test.jpg")
-    with open("result.jpg","rb") as image_file:
+    os.system(python3 social-distancing.py --image enabled --video disabled --image_in ./test.jpg --image_out ./output.jpg --horizontal_ratio 0.7 --vertical_ratio 0.7 --openpose_folder /openpose/models/)
+    with open("output.jpg","rb") as image_file:
         encoded_string = base64.b64encode(image_file.read())
         base64_string = encoded_string.decode('utf-8')
-    return jsonify(img=base64_string, stat=stats)
+    return jsonify(img=base64_string)
 
 
 
